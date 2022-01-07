@@ -39,6 +39,7 @@ const DivLoader = styled.div`
         width: 100%;
         height: 45px;
         background: #52B6FF;
+        opacity: 0.7;
         border-radius: 5px;
         color: #ffffff;
         border: none;

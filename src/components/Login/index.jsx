@@ -1,6 +1,5 @@
 import React, {useState} from "react"
 import {Container, StyledLink, DivLoader} from './style.jsx'
-import { Link } from "react-router-dom"
 import axios from 'axios'
 import {useNavigate} from 'react-router'
 import Input from '../Input'
@@ -31,7 +30,7 @@ function Login({setUser, setToken}){
              navigate('/hoje')
          })
          .catch(error =>{
-            //setLoading(false);
+            setLoading(false);
             alert(error.response.data.message);
          })
     }
@@ -57,7 +56,7 @@ function Login({setUser, setToken}){
 
                 {(loading) 
                     ? <DivLoader><Loader type='ThreeDots' color="white" width={51} height={13}/></DivLoader>
-                    : <button disabled={loading} type="submit"> Entrar </button>}
+                    : <button type="submit"> Entrar </button>}
 
                 
             </form>

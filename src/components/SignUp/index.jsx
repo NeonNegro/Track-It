@@ -1,6 +1,11 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import axios from "axios";
+import { Container } from "../Login/style";
+import BigLogo from "../BigLogo";
+import Input from "../Input";
+import { DivLoader, StyledLink } from "./style";
+import Loader from "react-loader-spinner";
 
 
 function SignUp (){
@@ -9,9 +14,12 @@ function SignUp (){
     const [name, setName] = useState('');
     const [image, setImage] = useState('https://i.imgur.com/8dSVWBJ.jpeg');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     function handleSignUp(e){
         e.preventDefault();
+        setLoading(true);
 
         axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up',{
             email: email,
@@ -20,48 +28,58 @@ function SignUp (){
             password: password
         })
         .then((data) =>{
-            debugger;
-            console.log(data);
+            setLoading(false);
+            navigate('/');
         })
         .catch((error) =>{
-            debugger;
-            console.log(error.response);
+            setLoading(false);
+            alert(error.response.data.message);
         })
     }
 
     return (
-        <form onSubmit={handleSignUp}>
-            <input 
-                type='text' 
-                value= {email}
-                name='email'
-                onChange={(e)=>{setEmail(e.currentTarget.value)}}
-                placeholder='email'
-            />
-            <input 
-                type='password' 
-                value= {password}
-                name='password'
-                onChange={(e)=>{setPassword(e.currentTarget.value)}}
-                placeholder='senha'
-            />
-            <input 
-                type='text' 
-                value= {name}
-                name='name'
-                onChange={(e)=>{setName(e.currentTarget.value)}}
-                placeholder='nome'
-            />
-            <input 
-                type='text' 
-                value= {image}
-                name='image'
-                onChange={(e)=>{setImage(e.currentTarget.value)}}
-                placeholder='foto'
-            />
-            <Link to='/'>Já tem uma conta? Faça login!</Link>
-            <button type="submit">Cadastrar</button>
-        </form>
+        <Container>
+            <BigLogo/>
+            <form onSubmit={handleSignUp}>
+                <Input 
+                    disabled={loading} 
+                    type='text' 
+                    value= {email}
+                    name='email'
+                    onChange={(e)=>{setEmail(e.currentTarget.value)}}
+                    placeholder='email'
+                />
+                <Input 
+                    disabled={loading} 
+                    type='password' 
+                    value= {password}
+                    name='password'
+                    onChange={(e)=>{setPassword(e.currentTarget.value)}}
+                    placeholder='senha'
+                />
+                <Input 
+                    disabled={loading} 
+                    type='text' 
+                    value= {name}
+                    name='name'
+                    onChange={(e)=>{setName(e.currentTarget.value)}}
+                    placeholder='nome'
+                />
+                <Input 
+                    disabled={loading} 
+                    type='text' 
+                    value= {image}
+                    name='image'
+                    onChange={(e)=>{setImage(e.currentTarget.value)}}
+                    placeholder='foto'
+                />
+                {(loading) 
+                    ? <DivLoader><Loader type='ThreeDots' color="white" width={51} height={13}/></DivLoader>
+                    : <button type="submit"> Cadastrar </button>}
+
+            </form>
+            <StyledLink to='/'>Já tem uma conta? Faça login!</StyledLink>
+        </Container>
     )
 }
 
