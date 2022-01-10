@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -26,7 +25,6 @@ const Container = styled.div`
         border: none;
     }
 `;
-
 
 const StyledLink = styled(Link)`
     margin-top:19px;

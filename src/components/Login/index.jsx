@@ -1,18 +1,22 @@
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
 import {Container, StyledLink, DivLoader} from './style.jsx'
 import axios from 'axios'
 import {useNavigate} from 'react-router'
-import Input from '../Input'
+import { DefaultInput } from "../../shared/styles/Input";
 import BigLogo from "../BigLogo/index.jsx"
 import Loader from "react-loader-spinner"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import UserContext from "../../contexts/UserContext.jsx"
+import CredentialContext from "../../contexts/CredentialContext.jsx"
 
 
-function Login({setUser, setToken}){
+function Login(){
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] =useState(false);
+    const [loading, setLoading] = useState(false);
+    const {setAndPersistUser} = useContext(UserContext);
+    const {setAndPersistToken} = useContext(CredentialContext);
     const navigate = useNavigate();
 
     function handleLogin(e){
@@ -25,9 +29,9 @@ function Login({setUser, setToken}){
 		 	password: password
 		 })
          .then(response =>{
-             setUser({...response.data});
-             setToken({...response.data.token});
-             navigate('/hoje')
+            setAndPersistUser({...response.data});
+            setAndPersistToken(response.data.token);
+            navigate('/hoje')
          })
          .catch(error =>{
             setLoading(false);
@@ -39,14 +43,14 @@ function Login({setUser, setToken}){
         <Container>
             <BigLogo />
             <form onSubmit={handleLogin}>
-                <Input required 
+                <DefaultInput required 
                     disabled = {loading}
                     type='email' 
                     value = {email} 
                     onChange={(e) => {setEmail(e.currentTarget.value)}} 
                     placeholder='email'
                 />
-                <Input required 
+                <DefaultInput required 
                     disabled= {loading}
                     type='password' 
                     value ={password} 

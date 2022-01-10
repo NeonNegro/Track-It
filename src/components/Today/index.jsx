@@ -1,26 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import CredentialContext from "../../contexts/CredentialContext";
 
 
 
-function Today({token, user}){
+function Today(){
 
     const[loading, setLoading]= useState(true);
 
-    console.log(user);
+    const {token} = useContext(CredentialContext);
 
-    useEffect(() => {
-        axios.get('https://mock-api.driven.com.br/api/v2/camppi/items', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
-        .then(response => {
-            console.log(response.data);
-            setLoading(false);
-        })
-        .catch(error => console.log(error.response));
-      }, []);
+    // useEffect(() => {
+    //     axios.get('https://mock-api.driven.com.br/api/v2/camppi/items', {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`
+    //       }
+    //     })
+    //     .then(response => {
+    //         console.log(response.data);
+    //         setLoading(false);
+    //     })
+    //     .catch(error => console.log(error.response));
+    //   }, [token]);
     
     if (loading) {
         return <h1>Carregando...</h1>

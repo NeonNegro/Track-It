@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios";
 import { Container } from "../Login/style";
 import BigLogo from "../BigLogo";
-import Input from "../Input";
+import {DefaultInput} from "../../shared/styles/Input";
 import { DivLoader, StyledLink } from "./style";
 import Loader from "react-loader-spinner";
 
@@ -41,7 +41,7 @@ function SignUp (){
         <Container>
             <BigLogo/>
             <form onSubmit={handleSignUp}>
-                <Input 
+                <DefaultInput 
                     disabled={loading} 
                     type='text' 
                     value= {email}
@@ -49,7 +49,7 @@ function SignUp (){
                     onChange={(e)=>{setEmail(e.currentTarget.value)}}
                     placeholder='email'
                 />
-                <Input 
+                <DefaultInput 
                     disabled={loading} 
                     type='password' 
                     value= {password}
@@ -57,7 +57,7 @@ function SignUp (){
                     onChange={(e)=>{setPassword(e.currentTarget.value)}}
                     placeholder='senha'
                 />
-                <Input 
+                <DefaultInput 
                     disabled={loading} 
                     type='text' 
                     value= {name}
@@ -65,7 +65,7 @@ function SignUp (){
                     onChange={(e)=>{setName(e.currentTarget.value)}}
                     placeholder='nome'
                 />
-                <Input 
+                <DefaultInput 
                     disabled={loading} 
                     type='text' 
                     value= {image}
