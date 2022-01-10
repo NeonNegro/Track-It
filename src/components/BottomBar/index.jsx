@@ -2,9 +2,12 @@ import { CircularProgressbarWithChildren, buildStyles } from "react-circular-pro
 import 'react-circular-progressbar/dist/styles.css';
 import {useLocation} from 'react-router-dom';
 import { Container, ProgressBarContainer, StyledLink } from "./style";
+import { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 
 function BottomBar(){
     const location = useLocation();
+    const {globalPercent} = useContext(UserContext);
 
     if(location.pathname ==='/' || location.pathname === '/cadastro')
         return ''
@@ -16,7 +19,7 @@ function BottomBar(){
             <StyledLink to='/habitos'>Hábitos</StyledLink>
             <ProgressBarContainer>
                 <CircularProgressbarWithChildren 
-                    value={66}
+                    value={globalPercent}
                     background
                     backgroundPadding={6}
                     styles={buildStyles({

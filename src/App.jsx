@@ -16,6 +16,7 @@ export default function App(){
     const [user, setUser] = useState(userOnLocalStorage);
     const tokenOnLocalStorage = localStorage.getItem("token");
 	const [token, setToken] = useState(tokenOnLocalStorage);
+    const [globalPercent, setGlobalPercent] = useState(null);
 
     function setAndPersistToken(token) {
 		setToken(token);
@@ -27,7 +28,7 @@ export default function App(){
 	}
     
     return (
-        <UserContext.Provider value={{user, setAndPersistUser}}>
+        <UserContext.Provider value={{user, setAndPersistUser, globalPercent, setGlobalPercent}}>
         <CredentialContext.Provider value= {{token, setAndPersistToken}}>
             <BrowserRouter>
                 <TopBar />

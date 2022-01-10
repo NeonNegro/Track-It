@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import CredentialContext from "../../contexts/CredentialContext";
+import UserContext from "../../contexts/UserContext";
 import { Title } from "../../shared/styles/Title";
 import { getConfig, week } from "../../shared/utils/utils";
 import Habit from "../Habit";
@@ -12,6 +13,7 @@ import { Page, Container, NewHabitOption } from "./style";
 function Habits(){
 
     const { token } = useContext(CredentialContext);
+    const { setGlobalPercent } = useContext(UserContext)
     const config = getConfig(token);
     const [habits, setHabits] = useState(null);
     const haveHabits = () => {return (habits !== null && habits.length !== 0 )};
@@ -24,7 +26,10 @@ function Habits(){
         }
     );
 
-    useEffect(() => { getHabits() }, [token]);
+    useEffect(() => { 
+        getHabits();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [token]);
 
 
     function getHabits(){
@@ -35,6 +40,27 @@ function Habits(){
         .catch(error => console.log(error.response));
     }
 
+     function getDayHabitsAndCalcProgress(){
+         axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
+         .then(response => {
+              calcProgress([...response.data]);
+         })
+         .catch(error => console.log(error.response));
+     }
+
+     function calcProgress(habits){
+         const total = habits.length;
+         if(total === 0){
+             setGlobalPercent(0);
+             return
+         }
+         const done = habits.filter(h => h.done).length;
+         if (done === 0){
+             setGlobalPercent(0);
+             return
+         }
+         setGlobalPercent(Math.round(done*100/total)); 
+     }
 
     function SubmitNewHabit(body){
 
@@ -44,6 +70,7 @@ function Habits(){
                 setLoading(false);
                 setShowNewHabit(false);
                 getHabits();
+                getDayHabitsAndCalcProgress();
         })
         .catch(error => {
             setLoading(false);
@@ -58,8 +85,8 @@ function Habits(){
 
         axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`, config)
         .then( response => {
-                console.log(response.data);
                 getHabits();
+                getDayHabitsAndCalcProgress();
         })
         .catch(error => {
             console.log(error.response);

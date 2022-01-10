@@ -10,8 +10,6 @@ import Loader from "react-loader-spinner";
 
 function SignUp (){
 
-    //let img_url = https://i.imgur.com/8dSVWBJ.jpeg;
-
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [image, setImage] = useState('');

@@ -7,12 +7,14 @@ import { Page, Container, SubTitle } from "./style";
 import DailyHabit from "../DailyHabit";
 import NoHabits from "../NoHabits";
 import 'dayjs/locale/pt-br'
+import UserContext from "../../contexts/UserContext";
 
 
 
 function Today(){
 
     const {token} = useContext(CredentialContext);
+    const {setGlobalPercent} = useContext(UserContext);
     const config = getConfig(token);
     const [habits, setHabits] = useState(null);
     const [percent, setPercent] = useState('loading');
@@ -24,22 +26,19 @@ function Today(){
     const dayMonth = dayjs().format('DD/MM');
 
 
-    useEffect(() => { getDayHabits()}, [token]);
-
-
-
-
-    function getDayHabits(){
+    useEffect(() => {
         axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
         .then(response => {
              setHabits([...response.data]);
-             console.log([...response.data]);
              calcProgress([...response.data]);
              if(response.data.find(h => h.currentSequence === h.highestSequence) !== undefined)
                 setCongrats(true);
         })
         .catch(error => console.log(error.response));
-    }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [token]);
+
 
     function checkHabit(habit){
         let promise;
@@ -74,14 +73,18 @@ function Today(){
         const total = habits.length;
         if(total === 0){
             setPercent('noHabits');
+            setGlobalPercent(0);
             return
         }
         const done = habits.filter(h => h.done).length;
         if (done === 0){
             setPercent('nothingDone');
+            setGlobalPercent(0);
             return
         }
-        setPercent(Math.round(done*100/total)); 
+        setPercent(Math.round(done*100/total));
+        setGlobalPercent(Math.round(done*100/total));
+        
     }
 
     
@@ -108,8 +111,5 @@ function Today(){
         </Page>
     )
 }
-
-
-// const haveHabits = () => {return (habits !== null && habits.length !== 0 )};
 
 export default Today;

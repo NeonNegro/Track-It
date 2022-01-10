@@ -15,7 +15,6 @@ const Container = styled(DefaultContainer)`
 `;
 
 const TitleD = styled(Title)`
-    /* width: 208px; */
     font-size: 20px;
     color: #666666;
     margin-bottom: 10px;
