@@ -18,6 +18,7 @@ function Today(){
     const config = getConfig(token);
     const [habits, setHabits] = useState(null);
     const [percent, setPercent] = useState('loading');
+    let [checkedsNow, setCheckedsNow] = useState([]);
     const [congrats, setCongrats] = useState(false);
 
     const dayjs = require('dayjs');
@@ -59,9 +60,15 @@ function Today(){
         if(habits[index].done){
             habits[index].currentSequence ++;
             setCongrats(true);
+            checkedsNow.push(id);
+            setCheckedsNow([...checkedsNow]);
         }
-        else 
+        else{ 
             habits[index].currentSequence --;
+            checkedsNow = checkedsNow.filter(c => c !== id);
+            setCheckedsNow([...checkedsNow]);
+        }
+
         setHabits([...habits]);
         checkHabit(habits[index]);
         calcProgress([...habits]);
@@ -105,7 +112,7 @@ function Today(){
                     && ''
                 }
                 {(typeof(percent) === 'number' || percent === 'nothingDone' ) 
-                    && habits.map(h => <DailyHabit habit={h} mark={toggleNewHabit} />)
+                    && habits.map(h => <DailyHabit habit={h} mark={toggleNewHabit} now={checkedsNow} />)
                 }
             </Container>
         </Page>

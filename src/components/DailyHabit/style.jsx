@@ -27,6 +27,11 @@ const Span = styled.span`
     font-size: 13px;
 `;
 
+const Green = styled(Span)`
+    display: inline;
+    color:   ${({green}) => (green) ? '#8FC549' : '#666666'};
+`;
+
 const CheckBox = styled.div`
     width: 69px;
     height: 69px;
@@ -58,5 +63,6 @@ export {
     Span,
     Left,
     Right,
-    CheckBox
+    CheckBox,
+    Green
 }
