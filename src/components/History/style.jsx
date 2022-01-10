@@ -11,15 +11,21 @@ const Page = styled(DefaultPage)`
 const Container = styled(DefaultContainer)`
 `;
 
-const SubTitle = styled.span`
-    font-size: 18px;
-    line-height: 25px;
-    color: ${({congrats}) => (congrats) ? '#8FC549' : '#BABABA' };
+const NewHabitOption = styled.div`
+    display: flex;
 `;
+
+const P = styled.p`
+    font-size: 17.976px;
+    color: #666666;
+    margin-top: 29px;
+`;
+
+
 
 export{
     Page, 
     Container,
-    SubTitle
-    
+    NewHabitOption,
+    P
 }

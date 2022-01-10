@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import CredentialContext from "../../contexts/CredentialContext";
 import { Title } from "../../shared/styles/Title";
-import week from "../../shared/utils/utils";
+import { getConfig, week } from "../../shared/utils/utils";
 import Habit from "../Habit";
 import Newbutton from "../NewButton";
 import NewHabit from "../NewHabit";
@@ -12,11 +12,7 @@ import { Page, Container, NewHabitOption } from "./style";
 function Habits(){
 
     const { token } = useContext(CredentialContext);
-    const config = {
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    };
+    const config = getConfig(token);
     const [habits, setHabits] = useState(null);
     const haveHabits = () => {return (habits !== null && habits.length !== 0 )};
     const [loading, setLoading] = useState(false);
@@ -28,13 +24,7 @@ function Habits(){
         }
     );
 
-// formNewHabit.days[0].selected = true;                 A salvação
-// setFormNewHabit({...formNewHabit});
-
-
-    useEffect(() => {
-        getHabits();        
-    }, [token]);
+    useEffect(() => { getHabits() }, [token]);
 
 
     function getHabits(){
@@ -46,7 +36,7 @@ function Habits(){
     }
 
 
-    function SubmitNewHabit(body, config){
+    function SubmitNewHabit(body){
 
         axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', body, config)
         .then( response => {
@@ -80,11 +70,6 @@ function Habits(){
     function PrepareNewHabit(){
         setLoading(true);
         let msg_erro = '';
-        const config = {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        }
         let body = {...formNewHabit};
         body.days = [...formNewHabit.days.filter(h => h.selected).map( x => x.value)];
 
@@ -98,7 +83,7 @@ function Habits(){
             return
         }
 
-        SubmitNewHabit(body, config);
+        SubmitNewHabit(body);
     }
 
     function toggleNewHabit(){

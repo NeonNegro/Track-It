@@ -2,13 +2,9 @@ import styled from "styled-components";
 
 const Container = styled.div`
     position: relative;
-    display: 'flex';
     background: #FFFFFF;
     border-radius: 5px;
     margin-top: 10px;
-    flex-direction:column;
-    align-items: center;
-    justify-content: flex-start;
 `
 
 const Title = styled.p`

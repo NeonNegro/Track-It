@@ -1,7 +1,7 @@
 import Day from "../Day"
 import { Container, Img, Title, Week } from "./style"
 import trash from "../../assets/canBin.png"
-import week from "../../shared/utils/utils";
+import { week } from "../../shared/utils/utils";
 
 function Habit({habit, del}){
     const newWeek = week();

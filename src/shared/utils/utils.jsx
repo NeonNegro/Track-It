@@ -1,4 +1,3 @@
-//const week = initWeek();
 
 function initDay(txt) {
     let value =-1;
@@ -30,5 +29,18 @@ function week(){
 }
 
 
+function getConfig(token){
+    return(
+        {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }
+    )
+}
 
-export default week;
+
+export {
+    week,
+    getConfig
+};

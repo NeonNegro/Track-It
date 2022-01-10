@@ -6,6 +6,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp/'
 import Today from './components/Today/'
 import TopBar from './components/TopBar'
+import History from './components/History'
 import CredentialContext from './contexts/CredentialContext'
 import UserContext from './contexts/UserContext'
 
@@ -35,7 +36,7 @@ export default function App(){
                     <Route path='/cadastro' element={<SignUp/>} />
                     <Route path='/habitos' element={<Habits/>} />
                     <Route path='/hoje' element={<Today />} />
-                    <Route path='/historico' element={<Login/>} />
+                    <Route path='/historico' element={<History />} />
                 </Routes>
                 <BottomBar />
             </BrowserRouter>
