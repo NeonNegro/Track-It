@@ -9,10 +9,11 @@ On this application you can:
  - SignUp using your e-mail, password, name and a photo;
  - LogIn using your e-mail and password;
  - Add habits and choose which days of the week you want to apply them;
- - Check which habits you have completed on the current day;
+ - Give a check on the habits you have completed on the current day;
+ - At any time, with the help of a circular graph located at the bottom of the screen, know wich percent of daily habits did you complete;
  - Delete habits that are no longer of interest to you;
  - And finally, a HystoryPage, where you can track your monthly performance.
-    - to be implemented
+    - to be implemented...
 
 
 
