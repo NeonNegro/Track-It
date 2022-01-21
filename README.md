@@ -1,11 +1,21 @@
 # Track It
 
-Track your  daily habits. Can you beat your records?
+Track your daily habits. Can you beat your record?
 
 
 
-## React
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
+On this application you can:
+ - SignUp using your e-mail, password, name and a photo;
+ - LogIn using your e-mail and password;
+ - Add habits and choose which days of the week you want to apply them;
+ - Check which habits you have completed on the current day;
+ - Delete habits that are no longer of interest to you;
+ - And finally, a HystoryPage, where you can track your monthly performance.
+    - to be implemented
+
+
+
 
 
 ## Technologies
