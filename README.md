@@ -11,6 +11,7 @@ On this application you can:
  - Add habits and choose which days of the week you want to apply them;
  - Give a check on the habits you have completed on the current day;
  - At any time, with the help of a circular graph located at the bottom of the screen, know wich percent of daily habits did you complete;
+   - For that, the ```react-circular-progressbar``` library was used. 
  - Delete habits that are no longer of interest to you;
  - And finally, a HystoryPage, where you can track your monthly performance.
     - to be implemented...
