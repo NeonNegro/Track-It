@@ -27,7 +27,8 @@ function Habits(){
     );
 
     useEffect(() => { 
-        getHabits();
+        if(token !== null)
+            getHabits();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
