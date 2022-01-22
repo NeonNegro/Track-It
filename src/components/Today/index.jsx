@@ -28,15 +28,16 @@ function Today(){
 
 
     useEffect(() => {
-        axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
-        .then(response => {
-             setHabits([...response.data]);
-             calcProgress([...response.data]);
-             if(response.data.find(h => h.currentSequence === h.highestSequence) !== undefined)
-                setCongrats(true);
-        })
-        .catch(error => console.log(error.response));
-
+        if(token !== null){
+            axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
+            .then(response => {
+                setHabits([...response.data]);
+                calcProgress([...response.data]);
+                if(response.data.find(h => h.currentSequence === h.highestSequence) !== undefined)
+                    setCongrats(true);
+            })
+            .catch(error => console.log(error.response));
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
