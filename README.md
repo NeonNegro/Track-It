@@ -5,7 +5,7 @@ Track your daily habits. Can you beat your record?
 
 ## Try it now!
 <p align="center">
- <a href="https://track-it-pied.vercel.app/" target="_blank"> <img src="src/assets/miniLogo.png" height = "160" width = "160" alt="" />
+ <a href="https://track-it-pied.vercel.app/" target="_blank"> <img src="https://i.imgur.com/YZQJqhs.png" height = "160" width = "160" alt="" />
 </p>
  
  Just click [here](https://track-it-pied.vercel.app/) or in the image.
