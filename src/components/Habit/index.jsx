@@ -17,7 +17,7 @@ function Habit({habit, del}){
             <Img src={trash} onClick={() => del(habit.id)}></Img>
             <Title>{habit.name}</Title>
             <Week>
-                {newWeek.map(d => (<Day handleForm={null} weekDay={d}></Day>))}
+                {newWeek.map(d => (<Day handleForm={null} weekDay={d} key={d.value}></Day>))}
             </Week>
         </Container>
     )

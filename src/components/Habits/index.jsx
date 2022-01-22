@@ -140,7 +140,7 @@ function Habits(){
                     send = {PrepareNewHabit}
                     />
                 {(haveHabits()) 
-                    ? habits.map(h => <Habit habit={h} del={DeleteHabit} />)
+                    ? habits.map(h => <Habit key={h.id} habit={h} del={DeleteHabit} />)
                     : <NoHabits/>}
             </Container>
         </Page>

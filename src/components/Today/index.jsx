@@ -112,7 +112,7 @@ function Today(){
                     && ''
                 }
                 {(typeof(percent) === 'number' || percent === 'nothingDone' ) 
-                    && habits.map(h => <DailyHabit habit={h} mark={toggleNewHabit} now={checkedsNow} />)
+                    && habits.map(h => <DailyHabit habit={h} key={h.id} mark={toggleNewHabit} now={checkedsNow} />)
                 }
             </Container>
         </Page>

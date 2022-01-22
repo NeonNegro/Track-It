@@ -8,7 +8,7 @@ function DailyHabit({habit, mark, now}){
     const s_h = (habit.highestSequence > 1) ? 's' : '';
 
     const greenNow = (now != null && now.find(m => m === habit.id) !== undefined ) ? true : false;
-    const greenHigh = (habit.currentSequence > habit.currentSequence) ? true : false;
+    const greenHigh = (habit.currentSequence > habit.highestSequence) ? true : false;
 
 
 

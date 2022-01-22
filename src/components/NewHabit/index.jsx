@@ -14,7 +14,7 @@ function NewHabit({show, setShow, form, handleForm, send, loading}){
                 onChange = {e => {handleForm(e.currentTarget.value)}}
                 placeholder='nome do hábito' />
                 <Week>
-                    {form.days.map(d => (<Day handleForm={handleForm} weekDay={d} disable={loading}></Day>))}
+                    {form.days.map(d => (<Day handleForm={handleForm} key={d.value} weekDay={d} disable={loading}></Day>))}
                 </Week>
                 <Options>
                     <ButtonC type='button' onClick={() => setShow(!show)}>Cancelar</ButtonC>
