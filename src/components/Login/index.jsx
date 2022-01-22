@@ -8,7 +8,6 @@ import Loader from "react-loader-spinner"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import UserContext from "../../contexts/UserContext.jsx"
 import CredentialContext from "../../contexts/CredentialContext.jsx"
-//import { useEffect } from "react/cjs/react.development";
 
 
 function Login(){
@@ -24,7 +23,7 @@ function Login(){
     
     if(token !== null)
             navigate('/hoje');
-            
+
     function handleLogin(e){
         e.preventDefault();
 
