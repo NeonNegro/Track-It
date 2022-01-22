@@ -9,7 +9,7 @@ function TopBar(){
 
     const {user} = useContext(UserContext);
 
-    if(location.pathname ==='/' || location.pathname === '/cadastro')
+    if(location.pathname ==='/' || location.pathname === '/cadastro' || user === null)
         return ''
 
 
