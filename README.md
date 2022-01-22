@@ -8,7 +8,10 @@ Track your daily habits. Can you beat your record?
  <a href="https://track-it-pied.vercel.app/" target="_blank"> <img src="https://i.imgur.com/YZQJqhs.png" height = "160" width = "160" alt="" />
 </p>
  
- Just click [here](https://track-it-pied.vercel.app/) or in the image.
+  
+ [](https://track-it-pied.vercel.app/) 
+ Just click <a href="https://track-it-pied.vercel.app/" target="_blank"><strong>here</strong></a>
+ or in the image.
 
 ## About
 On this application you can:
@@ -40,7 +43,7 @@ The following tools and libs were used in the construction of the project: <br /
   
 </p>
 
-## How to run
+## How to run it in your machine
 
 1. Clone this repository
 
