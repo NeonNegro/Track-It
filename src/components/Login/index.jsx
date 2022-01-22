@@ -8,7 +8,7 @@ import Loader from "react-loader-spinner"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import UserContext from "../../contexts/UserContext.jsx"
 import CredentialContext from "../../contexts/CredentialContext.jsx"
-import { useEffect } from "react/cjs/react.development";
+//import { useEffect } from "react/cjs/react.development";
 
 
 function Login(){
@@ -22,16 +22,9 @@ function Login(){
     const navigate = useNavigate();
 
     
-
-    useEffect(() => {
-        if(token !== null)
+    if(token !== null)
             navigate('/hoje');
-        else
-            console.log(token);
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-
+            
     function handleLogin(e){
         e.preventDefault();
 
