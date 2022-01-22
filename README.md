@@ -7,7 +7,7 @@ Track your daily habits. Can you beat your record?
 <p align="center">
  <a href="https://track-it-pied.vercel.app/" target="_blank"> <img src="src/assets/biglogo.png" height = "160" width = "160" alt="" />
 </p>
- Just click  <a href="https://track-it-pied.vercel.app/" target="_blank"> here </a> or in the image.
+ Just click  [here] or in the image.
 
 ## About
 On this application you can:
@@ -59,3 +59,5 @@ npm run build
 ```
 5. Finally, access http://localhost:3000 on your favorite browser (unless it is Internet Explorer. In this case, review your life decisions)
 
+
+[here]: https://track-it-pied.vercel.app/
