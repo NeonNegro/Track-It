@@ -43,7 +43,7 @@ The following tools and libs were used in the construction of the project: <br /
   
 </p>
 
-## How to run it in your machine
+## How to run it on your machine
 
 1. Clone this repository
 
