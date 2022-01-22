@@ -3,6 +3,11 @@
 Track your daily habits. Can you beat your record?
 
 
+## Try it now!
+<p align="center">
+ <a href="https://track-it-pied.vercel.app/" target="_blank"> <img src="src/assets/biglogo.png" height = "160" width = "160" alt="" />
+</p>
+ Just click  <a href="https://track-it-pied.vercel.app/" target="_blank"> here </a> or in the image.
 
 ## About
 On this application you can:
